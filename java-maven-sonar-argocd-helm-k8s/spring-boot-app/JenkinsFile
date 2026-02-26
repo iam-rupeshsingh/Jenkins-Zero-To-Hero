@@ -29,6 +29,12 @@ pipeline {
         }
       }
     }
+    stage('Verify Docker') {
+      steps {
+        sh 'docker --version'
+        sh 'docker info'
+      }
+    }
     stage('Build and Push Docker Image') {
       environment {
         DOCKER_IMAGE = "iamrupeshsingh/ultimate-cicd:${BUILD_NUMBER}"
